@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record id="custom_cutomer_crm_form" model="ir.ui.view">
+            <field name="name">custom.cutomer.crm.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='misc']" position="inside">
+                    <field name="related_patient_id"/>
+                </xpath>
+                <xpath expr="//group[@name='misc']" position="inside">
+                    <field name="related_patient_id"/>
+                </xpath>
+
+                <xpath expr="//group[1]//group[1]//field[@name='vat']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+            </field>
+
+        </record>
+
+        <record id="custom_cutomer_crm_list" model="ir.ui.view">
+            <field name="name">custom.cutomer.crm.list</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='city']" position="after">
+                    <field name="website" string="Website"/>
+                </xpath>
+            </field>
+
+        </record>
+    </data>
+</odoo>

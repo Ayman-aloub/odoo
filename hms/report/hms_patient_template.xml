@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <template id="template_hms_patient">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="item">
+                    <div class="page">
+                        <div class="container my-3">
+                                <div class="row">
+                                    <div class="col-6"><h1 style="color:red;">Patient status record</h1></div>
+                                    <div class="col-6"><img t-if="item.image" t-att-src="image_data_uri(item.image)" width="200px" height="200px"/></div>
+                                </div>
+                            </div>
+                            <div class="container my-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div>Name: <span t-if="item.first_name" t-field="item.first_name"/></div>
+                                        <div>Age: <span t-if="item.age" t-field="item.age"/></div>
+                                        <div>Department: <span t-if="item.dep_id.name" t-field="item.dep_id.name"/></div>
+                                        <div>Doctors: <t t-foreach="item.doctor_ids" t-as="doctor"><span t-if="doctor.doctor_id.first_name" t-field="doctor.doctor_id.first_name"/>,</t></div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div>email: <span t-if="item.email" t-field="item.email"/></div>
+                                        <div>Blood type: <span t-if="item.blood_typ" t-field="item.blood_typ"/></div>
+                                        <div>PCR: <span t-if="item.pcr" t-field="item.pcr"/></div>
+                                        <div>State: <span t-if="item.state" t-field="item.state"/></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="container my-3">
+                                <div class="row">
+                                    <div class="col-6"></div>
+                                    <div class="col-6"></div>
+                                </div>
+                            </div>
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">user</th>
+                                    <th scope="col">date</th>
+                                    <th scope="col">description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="item.pateint_hsitory" t-as="log">
+                                    <tr>
+                                        <t t-if="log.create_uid.name">
+                                            <td><span t-field="log.create_uid.name"/></td>
+                                        </t>
+                                        <t t-else="">
+                                            <td>Not Found user</td>
+                                        </t>
+                                        <td><span t-field="log.create_date"/></td>
+                                        <td><span t-field="log.descreption"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+
+        <!--
+            Template language , data model on report
+            html page
+
+            <!Doctype html>
+            <html>
+                <head>
+
+                 </head>
+                 <body>
+
+                 </body>
+
+            </html>
+Qweb
+ <t t-foreach="students"  t-as="students">
+
+
+            -->
+
+
+

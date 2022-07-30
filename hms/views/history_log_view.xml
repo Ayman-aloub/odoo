@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <record id="log_patient_tree_action" model="ir.actions.act_window" >
+            <field name="name">Histort</field>
+            <field name="res_model">log.patient</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id= "hospital_patient_log_menu" name="history" parent="hospital_root_menu" action="log_patient_tree_action"/>
+    </data>
+</odoo>
