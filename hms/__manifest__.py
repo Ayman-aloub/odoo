@@ -1,7 +1,7 @@
 {
     "name": "Hospital_System",
     "descreption": "Hospitals Management System",
-    "author": " abdelrahman",
+    "author": " ayman",
     "data":
         [
             'security/hms_security.xml',
