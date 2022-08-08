@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_clinical_appointment_user,access.clinical.appointment.user,model_patient_appointment,clinical_group_user,1,0,1,0
+access_clinical_patient_user,access.clinical.patient.user,model_res_patient,clinical_group_user,1,0,1,0
+access_clinical_appointment_admin,access.clinical.appointment.admin,model_patient_appointment,clinical_group_admin,1,1,1,1
+access_clinical_patient_admin,access.clinical.patient.admin,model_res_patient,clinical_group_admin,1,1,1,1
+access_clinical_clinic_admin,access.clinical.clinic.admin,model_res_clinic,clinical_group_admin,1,1,1,1
+access_clinical_appointments_doctor,access.clinical.appointments.doctor,model_patient_appointment,clinical_group_doctor,1,1,0,0

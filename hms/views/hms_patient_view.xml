@@ -25,7 +25,7 @@
                 </tree>
             </field>
         </record>
-                <record id="hms_patient_form_view" model="ir.ui.view">
+        <record id="hms_patient_form_view" model="ir.ui.view">
             <field name="name">hms.patient.tree.view</field>
             <field name="model">hms.patient</field>
             <field name="arch" type="xml">

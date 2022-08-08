@@ -7,7 +7,6 @@
         'security/ir.model.access.csv',
         'report/iti_student_template.xml',
         'report/iti_student_report.xml',
-
         'views/iti_student_view.xml',
         'views/iti_track_view.xml',
         'views/iti_course_view.xml',

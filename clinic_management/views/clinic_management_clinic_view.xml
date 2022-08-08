@@ -1,0 +1,21 @@
+<odoo>
+    <data>
+        <record id="clinic_management_clinic_tree_view" model="ir.ui.view">
+            <field name="name">clinic.management.clinic.tree.view</field>
+            <field name="model">res.clinic</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="clinic_no"/>
+                </tree>
+            </field>
+        </record>
+        <record id="clinic_management_clinic_action" model="ir.actions.act_window" >
+            <field name="name">Clinic</field>
+            <field name="res_model">res.clinic</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id= "clinic_management_clinic_menu" sequence="3" name="Clinic" parent="clinic_management_root_menu" action="clinic_management_clinic_action"/>
+
+    </data>
+</odoo>

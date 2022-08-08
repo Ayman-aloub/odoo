@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <record id="clinic_patient_tree_view" model="ir.ui.view">
+            <field name="name">clinic.patient.tree.view</field>
+            <field name="model">res.patient</field>
+            <field name="arch" type="xml">
+                <tree multi_edit="1">
+                    <field name="partner_id" />
+<!--                    <field name="name"/>-->
+                    <field name="age"/>
+<!--                    <field name="mobile"/>-->
+                    <field name="email"/>
+<!--                    <field name="gender"/>-->
+                    <field name="width" invisible="context.get('hide_width')"/>
+                </tree>
+            </field>
+        </record>
+        <record id="clinic_management_patient_search_view" model="ir.ui.view">
+            <field name="name">clinic.management.patient.search.view</field>
+            <field name="model">res.patient</field>
+            <field name="arch" type="xml">
+                <search string="Patient Search Leads">
+                    <field name="name" filter_domain="['|', '|', ('name', 'ilike', self), ('name', 'ilike', self), ('name',
+                        'ilike', self)]" string="Module"/>
+                    <separator />
+                    <filter string="female"
+                            name="female"
+                            domain="[('gender', '=', 'female')]"
+                            help="female patients"/>
+                    <filter string="male" name="male"
+                            domain="[('gender','=', 'male')]"
+                            help="male patients"/>
+                    <separator />
+                    <group expand="1" string="Group By">
+                        <filter string="gender" name="gender" context="{'group_by':'gender'}"/>
+                        <filter string="blood type" name="blood_type" context="{'group_by':'blood_type'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record id="clinic_patient_form_view" model="ir.ui.view">
+            <field name="name">clinic.patient.form.view</field>
+            <field name="model">res.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button id="button_create_appointment" type="action" name="%(clinic_management.action_create_appointment)d"
+                            string="Create Appointment" class="btn-primary"/>
+                    </header>
+                    <sheet>
+                    <group>
+                        <field name="partner_id"  required="0" readonly="1"/>
+                        <field name="name"/>
+                        <field name="age"/>
+                        <field name="mobile"/>
+                        <field name="email"/>
+                        <field name="gender"/>
+                        <field name="width" invisible="context.get('hide_width')"/>
+
+                    </group>
+                </sheet>
+                    <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+
+                </form>
+            </field>
+        </record>
+        <record id="clinic_management_patient_action" model="ir.actions.act_window" >
+            <field name="name">Patients</field>
+            <field name="res_model">res.patient</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{"search_default_blood_type":1,"search_default_male":1,'default_gender':'female','hide_width':1}</field>
+            <field name="domain">[('age','&lt;=',60)]</field>
+        </record>
+        <menuitem id= "clinic_management_root_menu" name="clinic management"/>
+        <menuitem id= "clinic_management_patient_menu"  sequence="2" name="Patient" parent="clinic_management_root_menu" action="clinic_management_patient_action"/>
+    </data>
+</odoo>
+
+<!--force_save="1" it save the value of readonly field-->

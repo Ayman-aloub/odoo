@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="appointment_report_templete">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="item">
+                    <div class="page">
+                            <div class="card container my-3 " >
+                                <div class="row my-3" style="color:red;">
+                                        <div class="h1 m-auto col-12">appointment <span t-if="item.name" t-field="item.name"/> </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-6 lead">clinic: <span  t-if="item.clinic_id.name" t-field="item.clinic_id.name"/></div>
+                                        <div class="col-6 lead">date: <span t-if="item.date" t-field="item.date"/></div>
+                                </div>
+                                <div class="row" style="color:blue;">
+                                        <div class="h6 col-12 my-1">patient information</div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-6">
+                                            <div class="lead">patient: <span t-if="item.patient_id.name" t-field="item.patient_id.name"/></div>
+                                            <div class="lead">Blood type: <span t-if="item.patient_id.blood_type" t-field="item.patient_id.blood_type"/></div>
+                                            <div class="lead">Age: <span t-if="item.patient_id.age" t-field="item.patient_id.age"/></div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="lead">Widtn: <span t-if="item.patient_id.width" t-field="item.patient_id.width"/></div>
+                                            <div class="lead">height: <span t-if="item.patient_id.height" t-field="item.patient_id.height"/></div>
+                                            <div class="lead">gender: <span t-if="item.patient_id.gender" t-field="item.patient_id.gender"/></div>
+                                        </div>
+
+                                </div>
+                                <div class="row">
+                                        <div class="h6 col-12 my-1" style="color:blue;">doctor</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+
+                                            <div class="lead">name: <span t-if="item.doctor_id.name" t-field="item.doctor_id.name"/></div>
+                                            <div class="lead">phone: <span t-if="item.doctor_id.phone" t-field="item.doctor_id.phone"/></div>
+                                            <div class="lead">email: <span t-if="item.doctor_id.email" t-field="item.doctor_id.email"/></div>
+                                    </div>
+                                    <div class="col-6"><img t-if="item.doctor_id.image_1920" t-att-src="image_data_uri(item.doctor_id.image_1920)" alt="doctor image" width="200px" height="200px"/></div>
+                                </div>
+                                <div class="row">
+                                        <div class="h6 col-12 my-1" style="color:blue;">notes</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 lead" t-if="item.notes" t-field="item.notes">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+
+        <!--
+            Template language , data model on report
+            html page
+
+            <!Doctype html>
+            <html>
+                <head>
+
+                 </head>
+                 <body>
+
+                 </body>
+
+            </html>
+Qweb
+ <t t-foreach="students"  t-as="students">
+
+
+            -->
+
+
+

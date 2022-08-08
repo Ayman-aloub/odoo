@@ -1,0 +1,35 @@
+
+<odoo>
+    <data>
+
+        <record id="clinical_category" model="ir.module.category">
+            <field name="name">Clinical Category Groups</field>
+            <!--            <field name="sequence">9</field>-->
+        </record>
+
+        <record id="clinical_group_user" model="res.groups">
+            <field name="name">Clinical User</field>
+            <field name="category_id" ref="clinic_management.clinical_category"/>
+        </record>
+
+        <record id="clinical_group_admin" model="res.groups">
+            <field name="name">clinical Admin</field>
+            <field name="category_id" ref="clinic_management.clinical_category"/>
+            <field name="implied_ids" eval="[(4, ref('clinic_management.clinical_group_user'))]"/>
+        </record>
+        <record id="clinical_group_doctor" model="res.groups">
+            <field name="name">Clinical Doctor</field>
+            <field name="category_id" ref="clinic_management.clinical_category"/>
+        </record>
+
+        <!-- See Own Records with state confirmed -->
+        <record id="see_confirmed_record" model="ir.rule">
+            <field name="name">See confirmed Record</field>
+            <field name="model_id" ref="model_patient_appointment"/>
+            <field name="domain_force">[('state','=', 'confirmed')]</field>
+            <field name="groups" eval="[(4,ref('clinic_management.clinical_group_doctor'))]"/>
+        </record>
+
+    </data>
+</odoo>
+

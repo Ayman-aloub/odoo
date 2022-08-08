@@ -1,0 +1,67 @@
+<odoo>
+    <data>
+        <record id="clinic_management_appointment_tree_view" model="ir.ui.view">
+            <field name="name">clinic.management.appointment.tree.view</field>
+            <field name="model">patient.appointment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="clinic_id" />
+                    <field name="patient_id"/>
+                    <field name="doctor_id"/>
+                    <field name="date" />
+
+                </tree>
+            </field>
+        </record>
+        <record id="clinic_management_appointment_form_view" model="ir.ui.view">
+            <field name="name">clinic.management.appointment.form.view</field>
+            <field name="model">patient.appointment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_new" type="object" string="new"
+                                class="btn btn-secondary" attrs="{'invisible': ['|',('state', '==', 'draft'),('state', '==', 'new')]}"/>
+                        <button name="action_confirmed" type="object" string="confirmed"
+                                class="btn btn-secondary" states="draft"/>
+                        <button name="action_cancelled" type="object" string="cancel"
+                                class="btn btn-secondary" states="confirmed"/>
+                         <button name="action_draft" type="object" string="draft"
+                                class="btn btn-secondary" states="new"/>
+
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="new,confirmed,cancelled"/>
+                    </header>
+                    <sheet>
+                        <group>
+                                <field name="clinic_id" groups="clinic_management.clinical_group_admin"/>
+                                <field name="patient_id"/>
+                                <field name="doctor_id" />
+                                <field name="date" />
+                                <field name="notes"/>
+
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="clinic_management_appointment_calender_view" model="ir.ui.view">
+            <field name="name">clinic.management.appointment.calender.view</field>
+            <field name="model">patient.appointment</field>
+            <field name="arch" type="xml">
+                <calendar string="Appointments"  mode="month" date_start="date" color="patient_id" hide_time="true" quick_add="False">
+                    <field name="patient_id" filters="1"/>
+                </calendar>
+            </field>
+        </record>
+        <record id="clinic_management_appointment_action" model="ir.actions.act_window" >
+            <field name="name">Appointment</field>
+            <field name="res_model">patient.appointment</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+        <menuitem id= "clinic_management_appointment_menu" sequence="1" name="Appointment" parent="clinic_management_root_menu" action="clinic_management_appointment_action"/>
+        <menuitem id= "clinic_management_appointment_menus" sequence="1"  name="Appointment" parent="clinic_management_appointment_menu" action="clinic_management_appointment_action"/>
+        <menuitem id= "clinic_management_wizard_appointment_menu" name="Create Appointment" parent="clinic_management_appointment_menu" action="action_create_appointment"/>
+    </data>
+</odoo>
